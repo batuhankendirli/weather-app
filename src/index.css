@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #00b4db;
+  background: -webkit-linear-gradient(to left, #0083b0, #00b4db);
+  background: linear-gradient(to left, #0083b0, #00b4db);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.cities-wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+}
+
+.city:hover {
+  background-color: #00b4db;
+}
+
+.selection {
+  position: absolute;
+  left: var(--left);
+  /* top: var(--top); */
+  width: var(--width);
+  height: var(--height);
+  transition: all 0.2s;
+}
+
+.condition-selection {
+  position: absolute;
+  left: var(--l);
+  width: var(--w);
+  height: 3px;
+  bottom: -1px;
+  transition: all 0.3s;
+}
+
+button {
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0083b0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #caf6ff;
+  border-radius: 10px;
+}
+
+.sticky-bar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+select::-webkit-scrollbar {
+  width: 5px;
+}
+
+select::-webkit-scrollbar-track {
+  background: #ecfcff;
+}
+
+select::-webkit-scrollbar-thumb {
+  background: #0083b0;
+  border-radius: 0;
+}
+
+/* ANIMATION */
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-facebook div {
+  display: inline-block;
+  position: absolute;
+  left: 8px;
+  width: 16px;
+  background: #00b4db;
+  animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  left: 8px;
+  animation-delay: -0.24s;
+}
+.lds-facebook div:nth-child(2) {
+  left: 32px;
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  left: 56px;
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
+
+/* GRAPH */
+.graph {
+  position: relative;
+  height: 20rem;
+  border-radius: 10px;
+}
+
+.labels {
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+.labels div {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, 0);
+}
+
+.points {
+  position: absolute;
+  top: 0;
+}
+
+.points div {
+  --size: 3rem;
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  top: var(--y);
+  left: var(--x);
+  transform: translate(calc(-0.5 * var(--size)), calc(-0.5 * var(--size)));
+}
+
+.points div p {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.marker {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.marker .circle {
+  position: absolute;
+  top: 0;
+  flex-shrink: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 1rem;
+  background-color: white;
+  transform: translateY(-50%);
+  box-shadow: 0 1px 5px rgb(0 0 0 / 10%), 0 2px 15px rgb(0 0 0 / 10%);
+}
+
+.marker .line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: #d6d6d6;
+}
+
+.graph svg {
+  width: 100%;
+  height: 100%;
+  transform: scaleY(-1);
+}
+
+.graph svg path {
+  vector-effect: non-scaling-stroke;
+}
+
+.graph.animated svg path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 0;
+  animation: draw 2.5s ease;
+}
+
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 2000;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+svg .stroke {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 0.15rem;
+  pointer-events: none;
+}
+
+svg .gradient {
+  pointer-events: none;
+  color: #f0e054;
+}
+
+.days-wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+}
+
+.footer-link {
+  position: relative;
+  transition: all 0.2s ease-in;
+}
+.footer-link::after {
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 0;
+  background-color: #0083b0;
+  transition: all 0.2s ease-in;
+}
+
+.footer-link:hover {
+  color: #0083b0;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
