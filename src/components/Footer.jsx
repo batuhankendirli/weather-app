@@ -1,3 +1,5 @@
+const year = new Date().getFullYear();
+
 const Footer = () => (
   <footer className="flex items-center text-base justify-center mt-8 gap-1 text-color-fifth border-t-2 border-color-fifth border-opacity-10 pt-8">
     <a
@@ -7,7 +9,7 @@ const Footer = () => (
     >
       Batuhan Kendirli
     </a>
-    <span>- 2022</span>
+    <span>- {year}</span>
   </footer>
 );
 
